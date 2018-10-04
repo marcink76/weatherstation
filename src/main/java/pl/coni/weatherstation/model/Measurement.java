@@ -32,7 +32,7 @@ public class Measurement implements Serializable {
     private double pressure;
 
     @Column(name = "PM0.1")
-    private int pm1;
+    private int pm01;
 
     @Column(name = "PM2.5")
     private int pm25;
@@ -42,6 +42,18 @@ public class Measurement implements Serializable {
 
     @Column(name = "Deszcz")
     private boolean rain;
+
+    @Column(name = "Intensywność_opadu")
+    private int intensityOfRain;
+
+    @Column(name = "Opis")
+    private String description;
+
+    @Column(name = "Punkt_rosy")
+    private float dewPoint;
+
+    @Column(name = "Id_czujnika")
+    private int sensorId;
 
     public Measurement() {
     }
@@ -94,12 +106,12 @@ public class Measurement implements Serializable {
         this.pressure = pressure;
     }
 
-    public int getPm1() {
-        return pm1;
+    public int getPm01() {
+        return pm01;
     }
 
-    public void setPm1(int pm1) {
-        this.pm1 = pm1;
+    public void setPm01(int pm01) {
+        this.pm01 = pm01;
     }
 
     public int getPm25() {
@@ -124,5 +136,41 @@ public class Measurement implements Serializable {
 
     public void setRain(boolean rain) {
         this.rain = rain;
+    }
+
+    public void setPm1(int pm01) {
+        this.pm01 = pm01;
+    }
+
+    public int getIntensityOfRain() {
+        return intensityOfRain;
+    }
+
+    public void setIntensityOfRain(int intensityOfRain) {
+        this.intensityOfRain = intensityOfRain;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getSensorId() {
+        return sensorId;
+    }
+
+    public void setSensorId(int sensorId) {
+        this.sensorId = sensorId;
+    }
+
+    public float getDewPoint() {
+        return dewPoint;
+    }
+
+    public void setDewPoint(float dewPoint) {
+        this.dewPoint = dewPoint;
     }
 }

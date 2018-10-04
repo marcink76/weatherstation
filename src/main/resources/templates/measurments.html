@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Pomiary: </title>
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
+<div id="last-mesurment-box">
+    <h4 class="title">Ostatni pomiar. Data: <span id="date"></span> Godzina: <span id="time"></span></h4>
 <table>
     <tr>
+        <td>Temperatura:</td>
+        <td id="temp" class="value-cell"></td>
+        <td>Wilgotność:</td>
+        <td id="humi" class="value-cell"></td>
+        <td>Ciśnienie:</td>
+        <td id="pressure" class="value-cell"></td>
+        <td>PM01:</td>
+        <td id="pm01" class="value-cell"></td>
+        <td>PM25:</td>
+        <td id="pm25" class="value-cell"></td>
+        <td>PM10:</td>
+        <td id="pm10" class="value-cell"></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+</div>
+<table id="measurment-table-headers">
+    <tr>
+        <th></th>
         <th>id</th>
         <th>data</th>
         <th>czas</th>
@@ -18,6 +43,31 @@
         <th>PM 10</th>
     </tr>
     <tr>
+        <th>max:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th th:text="${maxTemp}"></th>
+        <th th:text="${maxHumidity}"></th>
+        <th th:text="${maxPressure}"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>min:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th th:text="${minTemp}"></th>
+        <th th:text="${minHumidity}"></th>
+        <th th:text="${minPressure}"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>avg:</th>
         <th></th>
         <th></th>
         <th></th>
@@ -28,17 +78,22 @@
         <th></th>
         <th></th>
     </tr>
+</table>
+<table id="measurment-table">
     <tr th:each="measurment:${measurments}">
-        <td th:text="${measurment.id}"></td>
+        <td></td>
+        <td class="table-cell" th:text="${measurment.id}"></td>
         <td th:text="${measurment.date}"></td>
         <td th:text="${measurment.time}"></td>
         <td th:text="${measurment.temperature}"></td>
         <td th:text="${measurment.humidity}"></td>
         <td th:text="${measurment.pressure}"></td>
-        <td th:text="${measurment.pm1}"></td>
+        <td th:text="${measurment.pm01}"></td>
         <td th:text="${measurment.pm25}"></td>
         <td th:text="${measurment.pm10}"></td>
     </tr>
 </table>
+
 </body>
+<script src="/scripts/ajax.js"></script>
 </html>

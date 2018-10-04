@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 1.4em;
+    vertical-align: baseline;
+    text-decoration: none;
+    outline: 0;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+}
+
+#measurment-table-headers {
+    z-index: 7;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    top: 110px;
+    color: #ffffff;
+    border-color: white;
+}
+
+#measurment-table-headers th {
+    background-color: #3194ff;
+    font-weight: normal;
+    width: 10%;
+    height: 30px;
+}
+
+#measurment-table {
+    z-index: 5;
+    border: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 238px;
+    color: #ffffff;
+}
+
+#measurment-table td {
+    background-color: #7cc3ff;
+    text-align: center;
+    width: 10%;
+    height: 30px;
+}
+
+.value-cell {
+    background-color: white;
+    border-radius: 5px;
+}
+
+#last-mesurment-box {
+    z-index: 10;
+    position: fixed;
+    padding: 15px;
+    box-shadow: black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 70px;
+    background-color: #3194ff;
+}
+
+#last-mesurment-box td {
+    width: 150px;
+    text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

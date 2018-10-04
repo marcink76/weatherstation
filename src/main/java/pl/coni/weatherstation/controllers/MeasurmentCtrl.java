@@ -20,11 +20,23 @@ public class MeasurmentCtrl {
     @GetMapping("/all")
     public String getAllMeasurments(Model model) {
         List<Measurement> measurementList = measurmentRepo.findAll();
+        model.addAttribute("maxTemp", measurmentRepo.maxTemperature());
+        model.addAttribute("maxHumidity", measurmentRepo.maxHumidity());
+        model.addAttribute("maxPressure", measurmentRepo.maxPressure());
+        model.addAttribute("minTemp", measurmentRepo.minTemperature());
+        model.addAttribute("minHumidity", measurmentRepo.minHumidity());
+        model.addAttribute("minPressure", measurmentRepo.minPressure());
         model.addAttribute("avarageTemp", measurmentRepo.avarageTemperature());
         model.addAttribute("avarageHumidity", measurmentRepo.avarageHumidity());
         model.addAttribute("avaragePressure", measurmentRepo.avaragePressure());
         model.addAttribute("measurments", measurementList);
         return "measurments";
+    }
+
+    @GetMapping("/last")
+    public String getLatMeasurment(Model model) {
+        model.addAttribute("lastMeasurment", measurmentRepo.findFirstByOrderByIdDesc());
+        return "lastMeasurment";
     }
 
 }

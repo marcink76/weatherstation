@@ -1,0 +1,99 @@
+$text-color: grey;
+$background-color: #aaaaaa;
+$th-background-color: #3194ff;
+$td-background-color: #7cc3ff;
+$font-color: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 1.4em;
+  vertical-align: baseline;
+  text-decoration: none;
+  outline: 0;
+}
+
+@mixin padding() {
+
+}
+
+@mixin position-abs($left-pos, $top-pos) {
+  position: absolute;
+  left: $left-pos;
+  top: $top-pos;
+}
+
+@mixin position-fix($left-pos, $top-pos) {
+  position: fixed;
+  left: $left-pos;
+  top: $top-pos;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin center-on-screen($margin-left, $margin-right) {
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+}
+
+#measurment-table-headers {
+  z-index: 7;
+  width: 100%;
+  @include position-fix(0px, 110px);
+  color: $font-color;
+  border-color: white;
+  th {
+    background-color: $th-background-color;
+    font-weight: normal;
+    @include size(10%, 30px);
+  }
+}
+
+#measurment-table {
+  z-index: 5;
+  border: none;
+  @include size(100%, 100%);
+  @include position-abs(0px, 238px);
+  color: $font-color;
+  td {
+    background-color: $td-background-color;
+    text-align: center;
+    @include size(10%, 30px);
+  }
+}
+
+.value-cell {
+  background-color: white;
+  @include border-radius(5px);
+
+}
+
+#last-mesurment-box {
+  z-index: 10;
+  position: fixed;
+  padding: 15px;
+  box-shadow: black;
+  @include center-on-screen(auto, auto);
+  @include size(100%, 70px);
+  background-color: #3194ff;
+  td {
+    width: 150px;
+    text-align: center;
+  }
+}

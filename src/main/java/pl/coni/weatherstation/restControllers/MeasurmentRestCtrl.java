@@ -3,9 +3,9 @@ package pl.coni.weatherstation.restControllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.coni.weatherstation.Services.MeasurmentService;
 import pl.coni.weatherstation.model.Measurement;
 import pl.coni.weatherstation.repositories.MeasurmentRepo;
+import pl.coni.weatherstation.services.MeasurmentService;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class MeasurmentRestCtrl {
     @Autowired
     private MeasurmentService measurmentService;
 
+
     @GetMapping("/")
     public List<Measurement> getAllMeasurments() {
         return measurmentRepo.findAll();
@@ -31,6 +32,11 @@ public class MeasurmentRestCtrl {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(measurement);
+    }
+
+    @GetMapping("/last")
+    public Measurement getLastMeasurment() {
+        return measurmentRepo.findFirstByOrderByIdDesc();
     }
 
     @PostMapping("")
