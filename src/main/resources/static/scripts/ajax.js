@@ -9,15 +9,12 @@ const data_value = document.getElementById('date');
 const time_value = document.getElementById('time');
 const box = document.getElementById('last-mesurment-box');
 
-let myVar = setInterval(loadLastMeasurment, 1000);
-// box.addEventListener('mouseover', function () {
-//     humi_value.innerText = 'marcin';
-//     console.log('najechałeś')
-// });
 
-box.addEventListener('mouseenter', function () {
+document.addEventListener("DOMContentLoaded", function (event) {
     loadLastMeasurment();
 });
+
+let myVar = setInterval(loadLastMeasurment, 5000);
 
 function loadLastMeasurment() {
     let xhttp = new XMLHttpRequest();

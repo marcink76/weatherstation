@@ -80,7 +80,8 @@ body {
 
 .value-cell {
   background-color: white;
-  @include border-radius(5px);
+  @include size(100px, 100px);
+  @include border-radius(50%);
 
 }
 
