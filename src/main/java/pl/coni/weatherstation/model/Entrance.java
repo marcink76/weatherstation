@@ -20,8 +20,17 @@ public class Entrance {
 
     private String rfidCardNo;
 
-//    @OneToOne
-//    private RfidCard rfidCard;
+    private boolean accesGranted;
+
+    private String lockerIp;
+
+    public boolean isAccesGranted() {
+        return accesGranted;
+    }
+
+    public void setAccesGranted(boolean accesGranted) {
+        this.accesGranted = accesGranted;
+    }
 
     public Long getEntranceId() {
         return entranceId;
@@ -53,5 +62,13 @@ public class Entrance {
 
     public void setRfidCardNo(String rfidCardNo) {
         this.rfidCardNo = rfidCardNo;
+    }
+
+    public String getLockerIp() {
+        return lockerIp;
+    }
+
+    public void setLockerIp(String lockerIp) {
+        this.lockerIp = lockerIp;
     }
 }
