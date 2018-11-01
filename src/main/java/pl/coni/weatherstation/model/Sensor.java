@@ -1,9 +1,9 @@
 package pl.coni.weatherstation.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "Czujnik")
 public class Sensor {
 
     @Id
@@ -14,13 +14,14 @@ public class Sensor {
     @Column(name = "Nazwa_czujnika")
     private String sensorName;
 
-    @Column(name = "Polozenie_czujnika")
-    private String sensorPlace;
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 
-    public Sensor(String sensorName, String sensorPlace) {
-        this.sensorName = sensorName;
-        this.sensorPlace = sensorPlace;
-    }
+    @OneToMany
+    @JoinColumn(name = "id_czujnika")
+    private Set<Measurement> measurement;
+
 
     public Long getSensor_id() {
         return sensor_id;
@@ -38,12 +39,20 @@ public class Sensor {
         this.sensorName = sensorName;
     }
 
-    public String getSensorPlace() {
-        return sensorPlace;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setSensorPlace(String sensorPlace) {
-        this.sensorPlace = sensorPlace;
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Set<Measurement> getMeasurement() {
+        return measurement;
+    }
+
+    public void setMeasurement(Set<Measurement> measurement) {
+        this.measurement = measurement;
     }
 }
 

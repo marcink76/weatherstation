@@ -52,8 +52,10 @@ public class Measurement implements Serializable {
     @Column(name = "Punkt_rosy")
     private float dewPoint;
 
-    @Column(name = "Id_czujnika")
-    private int sensorId;
+    @ManyToOne
+    @JoinColumn(name = "id_czujnika")
+    private Sensor sensor;
+
 
     public Measurement() {
     }
@@ -158,13 +160,6 @@ public class Measurement implements Serializable {
         this.description = description;
     }
 
-    public int getSensorId() {
-        return sensorId;
-    }
-
-    public void setSensorId(int sensorId) {
-        this.sensorId = sensorId;
-    }
 
     public float getDewPoint() {
         return dewPoint;

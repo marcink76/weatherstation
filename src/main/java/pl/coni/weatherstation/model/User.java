@@ -15,6 +15,7 @@ public class User {
     private String lastName;
 
     @OneToMany
+    @JoinColumn(name = "user_id")
     private Set<RfidCard> rfidCard;
 
     public Long getUserId() {

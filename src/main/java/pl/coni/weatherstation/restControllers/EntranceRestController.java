@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coni.weatherstation.model.Entrance;
 import pl.coni.weatherstation.repositories.EntranceRepo;
 import pl.coni.weatherstation.services.EntraceService;
-import pl.coni.weatherstation.utils.HTTPRequestSender;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,9 +20,6 @@ public class EntranceRestController {
     @Autowired
     private EntraceService entraceService;
 
-    @Autowired
-    private HTTPRequestSender httpRequestSender;
-
     @GetMapping("/")
     public List<Entrance> getAllEntrances() {
         return entranceRepo.findAll();
@@ -33,11 +29,11 @@ public class EntranceRestController {
     public ResponseEntity<?> addEntrance(@RequestBody Entrance entrance) {
         System.out.println(entrance.getRfidCardNo() + " " + entrance.getLockerIp());
         try {
-            httpRequestSender.httpSender(entrance.getLockerIp(), "unLock");
+            entraceService.checkCardNumber(entrance);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        Entrance entrance1 = entraceService.saveEntrance(entrance);
+        Entrance entrance1 = entranceRepo.findFirstByOrderByEntranceId();
         return ResponseEntity.ok(entrance1);
     }
 }

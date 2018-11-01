@@ -12,6 +12,7 @@ public class RfidCard {
     private String rfidCardNumber;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Long getRfidId() {
